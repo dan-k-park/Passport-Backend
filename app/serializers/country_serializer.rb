@@ -1,3 +1,4 @@
 class CountrySerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :capital, :visits, :favorites
+  
 end
