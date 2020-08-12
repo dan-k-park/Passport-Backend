@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require_relative '../config/environment'
+require 'rest-client'
+
+# Get the body data form RESTClient RESTClient.get
+response = RestClient.get("https://restcountries.eu/rest/v2/all")
+
+# Format the data as JSON with JSON.parse
+countries = JSON.parse(response)
+countries.each do |country|
+  name = country["name"]
+  capital = country["capital"]
+  Country.create(name: name, capital: capital, visits: 0, favorites: 0)
+end
+
