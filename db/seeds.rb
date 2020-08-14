@@ -12,3 +12,4 @@ countries.each do |country|
   Country.create(name: name, capital: capital, visits: 0, favorites: 0)
 end
 
+User.create(username: 'test', password: 'pass', name: 'Joey Cho')

@@ -16,6 +16,7 @@ class AuthController < ApplicationController
     if logged_in?
       render json: { id: user.id, username: user.username }
     else
+      byebug
       render json: {error: 'No user could be found'}, status: 401
     end
   end
